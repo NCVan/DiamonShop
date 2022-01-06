@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 	<header id="header">
 			<div class="row">
@@ -11,6 +11,7 @@
 							alt="bootstrap sexy shop"> </a>
 					</h1>
 				</div>
+				
 				<div class="span4">
 					<div class="offerNoteWrapper">
 						<h1 class="dotmark">
@@ -42,14 +43,17 @@ Navigation Bar Section
 						class="btn btn-navbar"> <span class="icon-bar"></span> <span
 						class="icon-bar"></span> <span class="icon-bar"></span>
 					</a>
+					
 					<div class="nav-collapse">
 						<ul class="nav">
-							<li class="active"><a href="index.html">Home </a></li>
-							<li class=""><a href="list-view.html">List View</a></li>
-							<li class=""><a href="grid-view.html">Grid View</a></li>
-							<li class=""><a href="three-col.html">Three Column</a></li>
-							<li class=""><a href="four-col.html">Four Column</a></li>
-							<li class=""><a href="general.html">General Content</a></li>
+						<c:forEach var="item" items="${ menus }" varStatus="index">
+							<c:if test="${index.first }">
+								<li class="active"><a href="${ item.name }">${ item.name } </a></li>
+							</c:if>
+							<c:if test="${ not index.first }">
+								<li class=""><a href="${ item.name }">${ item.name } </a></li>
+							</c:if>
+						</c:forEach>
 						</ul>
 						<form action="#" class="navbar-search pull-left">
 							<input type="text" placeholder="Search"
@@ -58,7 +62,7 @@ Navigation Bar Section
 						<ul class="nav pull-right">
 							<li class="dropdown"><a data-toggle="dropdown"
 								class="dropdown-toggle" href="#"><span class="icon-lock"></span>
-									Login <b class="caret"></b></a>
+									Đăng nhập <b class="caret"></b></a>
 								<div class="dropdown-menu">
 									<form class="form-horizontal loginFrm">
 										<div class="control-group">
